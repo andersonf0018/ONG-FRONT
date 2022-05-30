@@ -40,20 +40,20 @@ function Relatorios() {
         <Table striped bordered hover size="sm">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Nome</th>
                 <th>Matrícula</th>
                 <th>CPF</th>
                 <th>Unidade</th>
+                <th>Atribuição</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
                 <td>Marcos</td>
                 <td>02307485</td>
                 <td>298347148-92</td>
                 <td>Recife Centro</td>
+                <td></td>
                 <td className="card-vermais"><a href="#" class=""><i class="bi bi-plus-square-fill"></i></a></td>
               </tr>
             </tbody>

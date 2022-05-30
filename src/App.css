@@ -497,3 +497,9 @@ li {
 .card-vermais a:hover{
   color: var(--transparenciaEscura);
 }
+.campo-pesquisa{
+  margin: 5px 0px 15px 0px;
+}
+.pesquisa{
+  margin: 0px !important;
+}

@@ -3,7 +3,7 @@ import Axios from "axios";
 import "../../App.css";
 import api from "../../services/api";
 
-import { Table, Card, Modal, Button } from "react-bootstrap";
+import { Table, Card, Modal, Button, Form } from "react-bootstrap";
 
 function Consultar() {
   const [show, setShow] = useState(false);
@@ -58,7 +58,18 @@ function Consultar() {
         <Card.Header className="card-header" as="h4">
           <div className="row">
             <div className="col-6">
-              <span>Consulta</span>
+              <div class="row">
+                <span>Consulta</span>
+                <div class="col-5">
+                  <Form.Select className="ajuste">
+                    <option>Acolhidos</option>
+                    <option>Voluntários</option>
+                    <option>Financeiro</option>
+                    <option>Estoque</option>
+                    <option>Relátorios de Unidade</option>
+                  </Form.Select>
+                </div>
+              </div>
             </div>
             <div className="col-6">
               <div className="row">
@@ -86,6 +97,7 @@ function Consultar() {
                 <th>Matrícula</th>
                 <th>CPF</th>
                 <th>Unidade</th>
+                <th>Atribuição</th>
               </tr>
             </thead>
             <tbody>

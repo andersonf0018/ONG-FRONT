@@ -3,12 +3,16 @@ import SideMenu, { menuItems } from "./components/SideMenu";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 
+/* Usuario */
 import Home from "./paginas/usuario/Home.js";
 import Cadastros from "./paginas/usuario/Cadastros.js";
 import Consultar from "./paginas/usuario/Consultar.js";
 import Relatorios from "./paginas/usuario/Relatorios.js";
 import Transferir from "./paginas/usuario/Transferir.js";
 import Desligamento from "./paginas/usuario/Desligamento.js";
+import Pesquisa from "./paginas/usuario/Pesquisa";
+
+
 /* Auth */
 import Login from "./paginas/auth/Login.js";
 import EsqueceuSenha from "./paginas/auth/EsqueceuSenha.js";
@@ -72,6 +76,9 @@ function App() {
             </Route>
             <Route exact path={"/mudanca-senha"}>
               <MudancaSenha />
+            </Route>
+            <Route exact path="/pesquisa">
+              <Pesquisa/>
             </Route>
           </Switch>
         </div>

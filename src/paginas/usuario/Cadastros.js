@@ -126,7 +126,14 @@ function Cadastros() {
               <div className="row">
                 <input
                   className="form-control campo-cadastro-usuario col"
-                  type=""
+                  type="text"
+                  placeholder="Contatos de Emergência"
+                  id="campo-cadastro-contato-emergencia"
+                  name="campo-cadastro-contato-emergencia"
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
                   placeholder="Contatos de Emergência"
                   id="campo-cadastro-contato-emergencia"
                   name="campo-cadastro-contato-emergencia"
@@ -216,6 +223,11 @@ function Cadastros() {
                   id="campo-cadastro-bairro"
                   name="campo-cadastro-bairro"
                 />
+              </div>
+              <div className="row">
+                <Form.Group controlId="formFileMultiple" className="mb-3">
+                <Form.Control type="file" multiple />
+                </Form.Group>
               </div>
               <div className="row">
                 <button className="submit-btn">Cadastrar</button>

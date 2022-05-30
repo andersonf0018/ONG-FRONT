@@ -17,7 +17,7 @@ const dataMeses = {
   ],
   datasets: [
     {
-      label: "Número de pessoas",
+      label: "Número de cadastros",
       data: [65, 59, 80, 81, 56, 55, 40, 34, 57, 10, 19, 15],
       backgroundColor: [
         "#6fbf83",
@@ -81,7 +81,7 @@ function Home({ authorized }) {
               <h4>Acolhidos na unidade</h4>
             </a>
             <p>
-              <span class="box-info-numero">0</span> cadastros
+              <span className="box-info-numero">0</span> cadastros
             </p>
           </div>
           <div className="col box-info acolhidos-pendente">
@@ -89,7 +89,7 @@ function Home({ authorized }) {
               <h4>Acolhidos com documentação pendente</h4>
             </a>
             <p>
-              <span class="box-info-numero">0</span> cadastros
+              <span className="box-info-numero">0</span> cadastros
             </p>
           </div>
         </div>
@@ -106,7 +106,7 @@ function Home({ authorized }) {
                   <div className="col-5 offset-2">
                     <Link exact to="/cadastros">
                       <button className="btn box-ultimos-cadastrados-btn-novo">
-                        <i class="bi bi-plus"></i> Novo cadastro
+                        <i className="bi bi-plus"></i> Novo cadastro
                       </button>
                     </Link>
                   </div>
@@ -142,8 +142,8 @@ function Home({ authorized }) {
                   <td>298347148-92</td>
                   <td>Recife Centro</td>
                   <td className="card-vermais">
-                    <a href="#" class="">
-                      <i class="bi bi-plus-square-fill"></i>
+                    <a href="#" className="">
+                      <i className="bi bi-plus-square-fill"></i>
                     </a>
                   </td>
                 </tr>
@@ -154,8 +154,8 @@ function Home({ authorized }) {
                   <td>298310279-84</td>
                   <td>Recife Centro</td>
                   <td className="card-vermais">
-                    <a href="#" class="">
-                      <i class="bi bi-plus-square-fill"></i>
+                    <a href="#" className="">
+                      <i className="bi bi-plus-square-fill"></i>
                     </a>
                   </td>
                 </tr>
@@ -166,8 +166,8 @@ function Home({ authorized }) {
                   <td>087673615-69</td>
                   <td>Recife Centro</td>
                   <td className="card-vermais">
-                    <a href="#" class="">
-                      <i class="bi bi-plus-square-fill"></i>
+                    <a href="#" className="">
+                      <i className="bi bi-plus-square-fill"></i>
                     </a>
                   </td>
                 </tr>
@@ -177,8 +177,8 @@ function Home({ authorized }) {
         </Card>
       </div>
       <div className="container box-graficos">
-        <div class="row">
-          <div class="col-6">
+        <div className="row">
+          <div className="col-6">
             <Card>
               <Card.Header className="card-header" as="h4">
                 <span>Faixa Etária</span>
@@ -201,10 +201,10 @@ function Home({ authorized }) {
               </Card.Body>
             </Card>
           </div>
-          <div class="col-6">
+          <div className="col-6">
             <Card>
               <Card.Header className="card-header" as="h4">
-                <span>Cadastros por mês (2021)</span>
+                <span>Cadastros por mês (ano)</span>
               </Card.Header>
               <Card.Body className="card-body">
                 <Bar
@@ -212,7 +212,54 @@ function Home({ authorized }) {
                   options={{
                     title: {
                       display: true,
-                      text: "Average Rainfall per month",
+                      fontSize: 20,
+                    },
+                    legend: {
+                      display: true,
+                      position: "right",
+                    },
+                  }}
+                />
+              </Card.Body>
+            </Card>
+          </div>
+        </div>
+      </div>
+      <div className="container box-graficos">
+        <div className="row">
+          <div className="col-6">
+            <Card>
+              <Card.Header className="card-header" as="h4">
+                <span>Quantitativo de usuários cadastrados</span>
+              </Card.Header>
+              <Card.Body className="card-body">
+                <Bar
+                  data={dataMeses}
+                  options={{
+                    title: {
+                      display: true,
+                      fontSize: 20,
+                    },
+                    legend: {
+                      display: true,
+                      position: "right",
+                    },
+                  }}
+                />
+              </Card.Body>
+            </Card>
+          </div>
+          <div className="col-6">
+            <Card>
+              <Card.Header className="card-header" as="h4">
+                <span>Quantitativo de cadastros por unidade</span>
+              </Card.Header>
+              <Card.Body className="card-body">
+                <Bar
+                  data={dataMeses}
+                  options={{
+                    title: {
+                      display: true,
                       fontSize: 20,
                     },
                     legend: {
