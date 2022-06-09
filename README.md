@@ -20,12 +20,13 @@
     - [Login](#login)
     - [Médico](#médico)
     - [Usuário](#usuário)
-    - [Super Usuário](#super-usuário)
     - [Cadastro](#cadastro)
-    - [Busca](#busca)
+    - [Relatório](#relatório)
 
 ## Documentação 📃:
-![thumb](./doc/images/)
+
+![thumb](./doc/images/thumb.png)
+
 ### Instalem as dependências antes de inicializar a aplicação. 
 ```javascript  
 npm install 
@@ -44,21 +45,17 @@ npm start
 
 
 ## Login
-![login](./doc/images/)
+![login](./doc/images/login.png)
+![login](./doc/images/forgotPassword.png)
 
-## Médico
-![médico](./doc/images/)
-
-## Usuário
-![usuario](./doc/images/)
-
-## Super Usuário
-![adm](./doc/images/)
+## Home
+![home](./doc/images/home.png)
 
 ## Cadastro
-![cadastro](./doc/images/)
+![cadastro](./doc/images/cadastro.png)
 
-## Busca
-![busca](./doc/images/)
+## Relatório
+![busca](./doc/images/relatorios.png)
+
 
 ### **[⬆ VOLTAR AO SUMÁRIO](#sumário-)**
