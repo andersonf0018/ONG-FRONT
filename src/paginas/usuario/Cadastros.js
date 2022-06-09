@@ -1,15 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../App.css";
-
+import api from "../../services/api";
 import { Form, Card } from "react-bootstrap";
 
 function Cadastros() {
+
+  // const [nomeCompleto, setNomeCompleto] = useState("");
+  // const [nomeDaMae, setNomeDaMae] = useState("");
+  // const [nomeDoPai, setNomeDoPai] = useState("");
+  // const [naturalidade, setNaturalidade] = useState("");
+  // const [nacionalidade, setNacionalidade] = useState("");
+  // const [idade, setIdade] = useState("");
+  // const [dataDeNascimento, setDataDeNascimento] = useState("");
+  // const [estadoCivil, setEstadoCivil] = useState("");
+  // const [raca, setRaca] = useState("");
+  // const [escolaridade, setEscolaridade] = useState("");
+  // const [profissao, setProfissao] = useState("");
+  // const [contatoEmergencia1, setContatoEmergencia1] = useState("");
+  // const [contatoEmergencia2, setContatoEmergencia2] = useState("");
+  // const [cpf, setCPF] = useState("");
+  // const [sexo, setSexo] = useState("");
+  // const [rg, setRG] = useState("");
+  // const [estadoEmissor, setEstadoEmissor] = useState("");
+  // const [dataDeEmissaoRG, setDataDeEmissaoRG] = useState("");
+  // const [orgaoEmissor, setOrgaoEmissor] = useState("");
+  // const [cep, setCep] = useState("");
+  // const [endereco, setEndereco] = useState("");
+  // const [estado, setEstado] = useState("");
+  // const [municipio, setMunicipio] = useState("");
+  // const [bairro, setBairro] = useState("");
+  const [form, setForm] = useState({});
+
+  const onChangeHandler = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    api.post('http://localhost:3333/ong/cadastrarAcolhido', form)
+      .then(response => {
+        console.log(response);
+      })
+  };
+
   return (
     <>
       <Card>
         <Card.Header className="card-header" as="h4">Cadastro</Card.Header>
         <Card.Body className="card-body">
-          <form className="formulario">
+          <form className="formulario" onSubmit={onSubmitHandler}>
             <div className="container">
               <div className="row">
                 <input
@@ -17,7 +59,8 @@ function Cadastros() {
                   type="text"
                   placeholder="Nome completo"
                   id="campo-cadastro-nome"
-                  name="campo-cadastro-nome"
+                  name="nomeCompleto"
+                  onChange={onChangeHandler}
                 />
               </div>
               <div className="row">
@@ -26,7 +69,8 @@ function Cadastros() {
                   type="text"
                   placeholder="Nome da mãe"
                   id="campo-cadastro-nome-mae"
-                  name="campo-cadastro-nome-mae"
+                  name="nomeDaMae"
+                  onChange={onChangeHandler}
                 />
               </div>
               <div className="row">
@@ -35,11 +79,228 @@ function Cadastros() {
                   type="text"
                   placeholder="Nome do pai"
                   id="campo-cadastro-nome-pai"
-                  name="campo-cadastro-nome-pai"
+                  name="nomeDoPai"
+                  onChange={onChangeHandler}
                 />
               </div>
               <div className="row">
-                <Form.Select className="form-control campo-cadastro-usuario col">
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Naturalidade"
+                  id="campo-cadastro-naturalidade"
+                  name="naturalidade"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Nacionalidade"
+                  id="campo-cadastro-nacionalidade"
+                  name="nacionalidade"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="number"
+                  placeholder="Idade"
+                  id="campo-cadastro-idade"
+                  name="idade"
+                  min="0"
+                  max="150"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  placeholder="Data de Nascimento"
+                  type="date"
+                  id="campo-cadastro-data-nascimento"
+                  name="dataDeNascimento"
+                  onChange={onChangeHandler}
+                />
+              </div>
+              <div className="row">
+                <div className="col mb-3">
+                  {/* <Form.Select>
+                    <option>Estado Cívil</option>
+                    <option value="solteiro">Solteiro(a)</option>
+                    <option value="casado">Casado(a)</option>
+                    <option value="divorciado">Divorciado(a)</option>
+                    <option value="viuvo">Viúvo(a)</option>
+                  </Form.Select> */}
+                  <input
+                    className="form-control campo-cadastro-estado-civil col"
+                    type="text"
+                    placeholder="Estado Cívil"
+                    id="campo-cadastro-estado-civil"
+                    name="estadoCivil"
+                    onChange={onChangeHandler}
+                  />
+                </div>
+                <div className="col mb-3">
+                  {/* <Form.Select>
+                    <option>Raça</option>
+                    <option value="Branco">Branco(a)</option>
+                    <option value="Preto">Preto(a)</option>
+                    <option value="Pardo">Pardo(a)</option>
+                    <option value="Amarelo">Amarelo(a)</option>
+                    <option value="Indigena">Indígena</option>
+                    <option value="Não Informada">Não informada</option>
+                  </Form.Select> */}
+                  <input
+                    className="form-control campo-cadastro-raca col"
+                    type="text"
+                    placeholder="Raça"
+                    id="campo-cadastro-raca"
+                    name="raca"
+                    onChange={onChangeHandler}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Escolaridade"
+                  id="campo-cadastro-escolaridade"
+                  name="escolaridade"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Profissão"
+                  id="campo-cadastro-profissao"
+                  name="profissao"
+                  onChange={onChangeHandler}
+                />
+              </div>
+              <div className="row">
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Contatos de Emergência"
+                  id="campo-cadastro-contato-emergencia"
+                  name="contatosDeEmergencia.numero1"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Contatos de Emergência"
+                  id="campo-cadastro-contato-emergencia"
+                  name="contatosDeEmergencia.numero2"
+                  onChange={onChangeHandler}
+                />
+              </div>
+              <div className="row">
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="CPF"
+                  id="campo-cadastro-cpf"
+                  name="CPF"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Sexo"
+                  id="campo-cadastro-sexo"
+                  name="sexo"
+                  onChange={onChangeHandler}
+                />
+              </div>
+              <div className="row">
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="RG"
+                  id="campo-cadastro-rg"
+                  name="RG"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Estado Emissor"
+                  id="campo-cadastro-estado-emissor"
+                  name="estadoEmissor"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="date"
+                  placeholder="Data de Emissão"
+                  id="campo-cadastro-emissao"
+                  name="dataDeEmissaoRG"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Orgão Emissor"
+                  id="campo-cadastro-orgao-emissor"
+                  name="orgaoEmissor"
+                  onChange={onChangeHandler}
+                />
+              </div>
+              <div className="row">
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="CEP"
+                  id="campo-cadastro-cep"
+                  name="CEP"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Endereço"
+                  id="campo-cadastro-endereço"
+                  name="endereco"
+                  onChange={onChangeHandler}
+                />
+              </div>
+              <div className="row">
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Estado"
+                  id="campo-cadastro-estado"
+                  name="estado"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Munícipio"
+                  id="campo-cadastro-municipio"
+                  name="municipio"
+                  onChange={onChangeHandler}
+                />
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Bairro"
+                  id="campo-cadastro-bairro"
+                  name="bairro"
+                  onChange={onChangeHandler}
+                />
+              </div>
+              <div className="row">
+                <input
+                  className="form-control campo-cadastro-usuario col"
+                  type="text"
+                  placeholder="Matricula"
+                  id="campo-cadastro-matricula"
+                  name="matricula"
+                  onChange={onChangeHandler}
+                />
+              </div>
+              <div className="row">
+                {/* <Form.Select className="form-control campo-cadastro-usuario col">
                   <option>Unidade de Origem</option>
                   <option value="unidade-recife-centro">
                     Recife - Centro
@@ -51,183 +312,15 @@ function Cadastros() {
                   <option value="unidade-jaboatao">
                     Jaboatão dos Guararapes
                   </option>
-                </Form.Select>
-              </div>
-              <div className="row">
+                </Form.Select> */}
                 <input
                   className="form-control campo-cadastro-usuario col"
                   type="text"
-                  placeholder="Naturalidade"
-                  id="campo-cadastro-naturalidade"
-                  name="campo-cadastro-naturalidade"
+                  placeholder="Unidade de Origem"
+                  id="campo-cadastro-origem"
+                  name="unidadeDeOrigem"
+                  onChange={onChangeHandler}
                 />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Nacionalidade"
-                  id="campo-cadastro-nacionalidade"
-                  name="campo-cadastro-nacionalidade"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="number"
-                  placeholder="Idade"
-                  id="campo-cadastro-idade"
-                  name="campo-cadastro-idade"
-                  min="0"
-                  max="150"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  placeholder="Data de Nascimento"
-                  type="text"
-                  id="campo-cadastro-data-nascimento"
-                  name="campo-cadastro-data-nascimento"
-                />
-              </div>
-              <div className="row">
-                <div className="col mb-3">
-                  <Form.Select>
-                    <option>Estado Cívil</option>
-                    <option value="solteiro">Solteiro(a)</option>
-                    <option value="casado">Casado(a)</option>
-                    <option value="divorciado">Divorciado(a)</option>
-                    <option value="viuvo">Viúvo(a)</option>
-                  </Form.Select>
-                </div>
-                <div className="col mb-3">
-                  <Form.Select>
-                    <option>Raça</option>
-                    <option value="branco">Branco(a)</option>
-                    <option value="preto">Preto(a)</option>
-                    <option value="pardo">Pardo(a)</option>
-                    <option value="amarelo">Amarelo(a)</option>
-                    <option value="indigena">Indígena</option>
-                    <option value="nao-informada">Não informada</option>
-                  </Form.Select>
-                </div>
-              </div>
-              <div className="row">
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Escolaridade"
-                  id="campo-cadastro-escolaridade"
-                  name="campo-cadastro-escolaridade"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Profissão"
-                  id="campo-cadastro-profissao"
-                  name="campo-cadastro-profissao"
-                />
-              </div>
-              <div className="row">
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Contatos de Emergência"
-                  id="campo-cadastro-contato-emergencia"
-                  name="campo-cadastro-contato-emergencia"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Contatos de Emergência"
-                  id="campo-cadastro-contato-emergencia"
-                  name="campo-cadastro-contato-emergencia"
-                />
-              </div>
-              <div className="row">
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="CPF"
-                  id="campo-cadastro-cpf"
-                  name="campo-cadastro-cpf"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Sexo"
-                  id="campo-cadastro-sexo"
-                  name="campo-cadastro-sexo"
-                />
-              </div>
-              <div className="row">
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="RG"
-                  id="campo-cadastro-rg"
-                  name="campo-cadastro-rg"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Estado Emissor"
-                  id="campo-cadastro-estado-emissor"
-                  name="campo-cadastro-estado-emissor"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Emissão"
-                  id="campo-cadastro-emissao"
-                  name="campo-cadastro-emissao"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Orgão Emissor"
-                  id="campo-cadastro-orgao-emissor"
-                  name="campo-cadastro-orgao-emissor"
-                />
-              </div>
-              <div className="row">
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="CEP"
-                  id="campo-cadastro-cep"
-                  name="campo-cadastro-cep"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Endereço"
-                  id="campo-cadastro-endereço"
-                  name="campo-cadastro-endereço"
-                />
-              </div>
-              <div className="row">
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Estado"
-                  id="campo-cadastro-estado"
-                  name="campo-cadastro-estado"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Munícipio"
-                  id="campo-cadastro-municipio"
-                  name="campo-cadastro-municipio"
-                />
-                <input
-                  className="form-control campo-cadastro-usuario col"
-                  type="text"
-                  placeholder="Bairro"
-                  id="campo-cadastro-bairro"
-                  name="campo-cadastro-bairro"
-                />
-              </div>
-              <div className="row">
-                <Form.Group controlId="formFileMultiple" className="mb-3">
-                <Form.Control type="file" multiple />
-                </Form.Group>
               </div>
               <div className="row">
                 <button className="submit-btn">Cadastrar</button>

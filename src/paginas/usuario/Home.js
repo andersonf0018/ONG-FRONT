@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../App.css";
+import api from "../../services/api";
 
 import { Link, Redirect } from "react-router-dom";
 import { Card, Table } from "react-bootstrap";
@@ -68,10 +69,14 @@ const dataFaixaEtaria = {
   ],
 };
 
-function Home({ authorized }) {
-  if (!authorized) {
-    return <Redirect to="/login" />;
-  }
+function Home() {
+  const [acolhidos, setAcolhidos] = useState([]);
+
+  useEffect(() => {
+    api.get("http://localhost:3333/ong/todosOsAcolhidos").then(({ data }) => {
+      setAcolhidos(data);
+    }).catch(error => console.log(error));
+  }, [acolhidos]);
   return (
     <>
       <div className="container">
@@ -103,14 +108,14 @@ function Home({ authorized }) {
               </div>
               <div className="col-6">
                 <div className="row">
-                  <div className="col-5 offset-2">
+                  <div className="col-6 offset-6">
                     <Link exact to="/cadastros">
                       <button className="btn box-ultimos-cadastrados-btn-novo">
                         <i className="bi bi-plus"></i> Novo cadastro
                       </button>
                     </Link>
                   </div>
-                  <div className="col-5">
+                  {/* <div className="col-6">
                     <input
                       className="form-control consulta-matricula"
                       type="text"
@@ -118,7 +123,7 @@ function Home({ authorized }) {
                       id="box-ultimos-cadastros-pesquisar"
                       name="box-ultimos-cadastros-pesquisar"
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -127,50 +132,21 @@ function Home({ authorized }) {
             <Table striped bordered hover size="sm">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th>Matricula</th>
                   <th>Nome</th>
-                  <th>Matrícula</th>
-                  <th>CPF</th>
                   <th>Unidade</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Marcos</td>
-                  <td>02307485</td>
-                  <td>298347148-92</td>
-                  <td>Recife Centro</td>
-                  <td className="card-vermais">
-                    <a href="#" className="">
-                      <i className="bi bi-plus-square-fill"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>José</td>
-                  <td>00293847</td>
-                  <td>298310279-84</td>
-                  <td>Recife Centro</td>
-                  <td className="card-vermais">
-                    <a href="#" className="">
-                      <i className="bi bi-plus-square-fill"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Renan</td>
-                  <td>01258141</td>
-                  <td>087673615-69</td>
-                  <td>Recife Centro</td>
-                  <td className="card-vermais">
-                    <a href="#" className="">
-                      <i className="bi bi-plus-square-fill"></i>
-                    </a>
-                  </td>
-                </tr>
+                {acolhidos.map(acolhido => {
+                  return (
+                    <tr>
+                      <td className="card-info">{acolhido.matricula}</td>
+                      <td className="card-info">{acolhido.nomeCompleto}</td>
+                      <td className="card-info">{acolhido.unidadeDeOrigem}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </Table>
           </Card.Body>

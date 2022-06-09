@@ -6,11 +6,15 @@ import { useState } from "react";
 /* Usuario */
 import Home from "./paginas/usuario/Home.js";
 import Cadastros from "./paginas/usuario/Cadastros.js";
-import Consultar from "./paginas/usuario/Consultar.js";
-import Relatorios from "./paginas/usuario/Relatorios.js";
+import Acolhidos from "./paginas/usuario/Acolhidos.js";
+import Colaboradores from "./paginas/usuario/Colaboradores.js";
 import Transferir from "./paginas/usuario/Transferir.js";
 import Desligamento from "./paginas/usuario/Desligamento.js";
 import Pesquisa from "./paginas/usuario/Pesquisa";
+
+import Anamnese from "./paginas/medicos/Anamnese";
+import PIA from "./paginas/medicos/PIA";
+import PlanejamentoSaida from "./paginas/medicos/PlanejamentoSaida";
 
 
 /* Auth */
@@ -20,6 +24,12 @@ import MudancaSenha from "./paginas/auth/MudancaSenha.js";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
+
+const ROLES = {
+  "voluntario": 1,
+  "medico": 2,
+  "admin": 3
+}
 
 function App() {
   const [inactive, setInactive] = useState(false);
@@ -41,10 +51,10 @@ function App() {
               </Route>
               {menu.subMenus && menu.subMenus.length > 0
                 ? menu.subMenus.map((subMenu, i) => (
-                    <Route key={subMenu.name} path={subMenu.to}>
-                      <h1>{subMenu.name}</h1>
-                    </Route>
-                  ))
+                  <Route key={subMenu.name} path={subMenu.to}>
+                    <h1>{subMenu.name}</h1>
+                  </Route>
+                ))
                 : null}
             </>
           ))}
@@ -56,18 +66,18 @@ function App() {
             <Route exact path={"/cadastros"}>
               <Cadastros />
             </Route>
-            <Route exact path={"/consultar"}>
-              <Consultar />
+            <Route exact path={"/acolhidos"}>
+              <Acolhidos />
             </Route>
             <Route exact path={"/transferir"}>
               <Transferir />
             </Route>
-            <Route exact path={"/relatorios"}>
-              <Relatorios />
+            <Route exact path={"/colaboradores"}>
+              <Colaboradores />
             </Route>
             <Route exact path={"/desligamento"}>
               <Desligamento />
-            </Route>            
+            </Route>
             <Route exact path={"/login"}>
               <Login />
             </Route>
@@ -78,7 +88,16 @@ function App() {
               <MudancaSenha />
             </Route>
             <Route exact path="/pesquisa">
-              <Pesquisa/>
+              <Pesquisa />
+            </Route>
+            <Route exact path="/anamnese">
+              <Anamnese />
+            </Route>
+            <Route exact path="/pia">
+              <PIA />
+            </Route>
+            <Route exact path="/planejamentosaida">
+              <PlanejamentoSaida />
             </Route>
           </Switch>
         </div>

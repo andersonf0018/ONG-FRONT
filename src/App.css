@@ -1,24 +1,30 @@
 /*** Imports Externos ***/
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
+
 /*** Estilos Gerais ***/
 * {
   margin: 0;
   padding: 0;
 }
+
 body {
-    background-color: var(--background) !important;
-    font-family: "Nunito", sans-serif !important;
+  background-color: var(--background) !important;
+  font-family: "Nunito", sans-serif !important;
 }
+
 h1 {
-    display: none;
-  }
+  display: none;
+}
+
 ul {
   padding: 0;
   margin: 0;
 }
+
 li {
   list-style: none;
 }
+
 /*** Estilos Root ***/
 :root {
   --verdeClaro: #6fbf83;
@@ -37,19 +43,23 @@ li {
   --preto: #000000;
   --transparenciaEscura: #212529;
 }
+
 ::-webkit-scrollbar {
   width: 3px;
 }
+
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px var(--cinza);
   border-radius: 10px;
   display: none;
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--cinzaTransparencia);
   border-radius: 10px;
   display: none;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--cinzaTransparencia);
   display: block;
@@ -64,13 +74,16 @@ li {
   box-sizing: border-box;
   transition: width 0.2s ease-in;
 }
+
 .side-menu.inactive {
   width: 80px;
 }
+
 .side-menu .top-section {
   position: relative;
   background-color: var(--verdeEscuro);
 }
+
 .side-menu .top-section .logo {
   width: 210px;
   overflow: hidden;
@@ -79,14 +92,17 @@ li {
   margin-top: 15px;
   margin-bottom: 10px;
 }
+
 .side-menu .top-section .logo img {
   max-width: 100%;
   max-height: 100%;
 }
+
 .side-menu .top-section .logo-favicon {
   max-width: 38px !important;
   max-height: 38px !important;
 }
+
 .side-menu .top-section .toggle-menu-btn {
   color: var(--branco);
   font-size: 22px;
@@ -97,21 +113,25 @@ li {
   cursor: pointer;
   margin-top: 3px;
 }
+
 .side-menu.inactive .top-section .toggle-menu-btn {
   color: var(--verdeEscuro) !important;
   right: -35px;
   margin-top: 3px;
 }
-.menu-infos{
+
+.menu-infos {
   background: var(--branco) !important;
   height: 67.45px;
   padding-left: 310px;
   padding-right: 48px;
 }
-.menu-infos .welcome-msg{
+
+.menu-infos .welcome-msg {
   transform: translateY(95%);
   float: right;
 }
+
 .side-menu .main-menu .menu-item {
   color: var(--azulPastel);
   text-decoration: none;
@@ -120,11 +140,13 @@ li {
   cursor: pointer;
   margin-bottom: 10px;
 }
+
 .side-menu .main-menu .menu-item.active {
   background: var(--verdeEscuro);
   border-radius: 5px;
   color: var(--branco);
 }
+
 .side-menu .main-menu {
   margin: 20px 0;
   position: relative;
@@ -133,9 +155,11 @@ li {
   overflow-x: hidden;
   padding: 0px 20px;
 }
+
 .side-menu .main-menu ul {
   padding-left: 0 !important;
 }
+
 .side-menu .main-menu .menu-item .menu-icon {
   display: inline-block;
   width: 40px;
@@ -144,6 +168,7 @@ li {
   line-height: 40px;
   text-align: center;
 }
+
 .side-menu .main-menu .menu-item span {
   position: absolute;
   display: inline-block;
@@ -152,12 +177,14 @@ li {
   transition: opacity 0.2s ease-in;
   font-weight: 500;
 }
+
 .side-menu.inactive .main-menu .menu-item span {
   opacity: 0;
   width: 0;
   height: 0;
   overflow: hidden;
 }
+
 .side-menu .main-menu .sub-menu {
   color: var(--cinzaTransparencia);
   margin-left: 20px;
@@ -168,9 +195,11 @@ li {
   overflow: hidden;
   transition: max-height 0.2s ease-in;
 }
+
 .side-menu .main-menu .sub-menu.active {
   max-height: 200px;
 }
+
 .side-menu .main-menu .sub-menu a {
   display: block;
   margin: 5px 0;
@@ -181,13 +210,15 @@ li {
   box-sizing: border-box;
   padding: 5px;
 }
+
 .side-menu .main-menu .sub-menu a.active {
   background: #222;
   display: block;
   border-radius: 5px;
   color: var(--branco);
 }
-.side-menu-footer{
+
+.side-menu-footer {
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -195,24 +226,28 @@ li {
   padding: 20px;
   box-sizing: border-box;
 }
-.side-menu-footer a{
+
+.side-menu-footer a {
   display: inline-block;
   color: var(--azulPastel);
   text-decoration: none;
   font-size: 16px;
 }
-.side-menu-footer a:hover{
+
+.side-menu-footer a:hover {
   display: inline-block;
   color: var(--azulPastel) !important;
   text-decoration: none !important;
   font-size: 16px;
 }
-.side-menu.inactive .side-menu-footer .user-info{
+
+.side-menu.inactive .side-menu-footer .user-info {
   opacity: 1;
   width: 0;
   height: 0;
   overflow: hidden;
 }
+
 .conteudo {
   margin-left: 300px;
   transition: margin-left 0.2s ease-in;
@@ -220,9 +255,11 @@ li {
   padding-top: 25px;
   box-sizing: border-box;
 }
+
 .conteudo.inactive {
   margin-left: 80px;
 }
+
 .page-message {
   display: block;
   margin: 0 auto;
@@ -233,39 +270,48 @@ li {
   padding: 15px;
   border-radius: 12px;
 }
+
 .colunas {
   margin-top: 25px;
 }
+
 .coluna {
   width: 50%;
 }
+
 .coluna.esquerda {
   float: left;
   display: inline-block;
 }
+
 .coluna.direita {
   float: right !important;
   display: inline-block;
   width: 30%;
   margin: 0;
 }
+
 .grafico {
   width: 50%;
   display: block;
   margin: 0 auto;
 }
+
 .informacao {
   border: 1px solid var(--cinza);
   margin-top: 25px;
   padding: 10px;
   border-radius: 12px;
 }
+
 .tabela {
   width: 30%;
 }
+
 .campo-login {
   margin: 20px auto;
 }
+
 .campo-cadastro-usuario {
   display: block;
   padding: 12px;
@@ -274,9 +320,11 @@ li {
   border: 1px solid var(--verdeClaro);
   border-radius: 8px;
 }
-.campo-transferir{
+
+.campo-transferir {
   margin: 20px 0px;
 }
+
 .submit-btn {
   display: block;
   margin: 0 auto;
@@ -293,6 +341,7 @@ li {
   text-transform: uppercase;
   margin-bottom: 20px;
 }
+
 .select-btn {
   display: block;
   margin: 0 auto;
@@ -306,73 +355,90 @@ li {
   border-radius: 12px;
   margin-top: 30px;
 }
-.tela-login{
+
+.tela-login {
   padding: 100px;
 }
-.logo-box{
+
+.logo-box {
   position: relative;
 }
-.logo-inicial{
+
+.logo-inicial {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
 }
-.formulario-inicial{
+
+.formulario-inicial {
   border: 1px solid var(--verdeClaro);
   border-radius: 12px;
   padding: 60px 60px;
 }
-.formulario-descricao{
+
+.formulario-descricao {
   text-align: center;
   color: var(--preto);
   margin-bottom: 8%;
   text-align: left;
 }
-.formulario-texto-titulo{
+
+.formulario-texto-titulo {
   font-size: 32px;
   font-weight: 800;
 }
-.formulario-texto-descricao{
+
+.formulario-texto-descricao {
   font-size: 16px;
   font-weight: 300;
 }
-.campo-cadastro-usuario{
+
+.campo-cadastro-usuario {
   border-radius: 5px;
   border-color: var(--verdeMedio);
 }
-.campo-inicial{
+
+.campo-inicial {
   position: relative;
 }
-.campo-inicial input{
+
+.campo-inicial input {
   padding-left: 35px;
 }
-.campo-inicial i{
+
+.campo-inicial i {
   font-size: 18px;
   position: absolute;
   padding: 7px;
   pointer-events: none;
 }
-.lembrar-conta-checkbox{
+
+.lembrar-conta-checkbox {
   text-align: left;
 }
-.label-lembrar-conta{
+
+.label-lembrar-conta {
   margin-left: 10px;
 }
-.esqueceu-senha{
+
+.esqueceu-senha {
   text-align: right;
 }
-.esqueceu-senha-link{
+
+.esqueceu-senha-link {
   text-decoration: none;
   font-weight: 500;
 }
-.formulario-botoes{
+
+.formulario-botoes {
   text-align: center;
   color: var(--preto) !important;
   margin-top: 25px;
 }
-.botao-entrar{
+
+.botao-entrar {
   background-color: var(--verdeAzulado);
   border-radius: 25px;
   border: none;
@@ -382,51 +448,62 @@ li {
   padding: 6px 120px;
   margin-top: 5%;
 }
-.botao-popup{
+
+.botao-popup {
   position: relative;
   border: 0px !important;
   font-size: 18px;
   padding: 0px !important;
 }
-.botao-popup i{
+
+.botao-popup i {
   padding: 6px;
   font-size: 18px;
 }
-.card-header{
+
+.card-header {
   background: var(--verdeMedio) !important;
   color: var(--branco) !important;
   padding: 24px 28px !important;
   font-weight: 700 !important;
 }
-.card-header span{
+
+.card-header span {
   display: inline-block;
   vertical-align: middle;
 }
-.card-body{
+
+.card-body {
   background: var(--branco) !important;
 }
-.modal-detalhes{
+
+.modal-detalhes {
   max-width: 60% !important;
 }
-.modal-texto-desabilitado{
+
+.modal-texto-desabilitado {
   color: #b7b7b8;
   font-weight: 300;
 }
-.falso-form{
+
+.falso-form {
   border-bottom: 1px solid var(--background);
   font-size: 18px;
 }
-.falso-form p{
+
+.falso-form p {
   padding: 15px 20px;
   margin: 0;
   font-weight: 600;
 }
-.falso-form p span{
+
+.falso-form p span {
   font-size: 15px;
   padding-left: 10px;
   font-weight: 500;
 }
-.horizontal-btn{
+
+.horizontal-btn {
   background-color: var(--verdeEscuro);
   color: var(--branco);
   width: 100%;
@@ -436,12 +513,14 @@ li {
   border-radius: 25px;
   border: none;
 }
-.consulta-matricula{
+
+.consulta-matricula {
   border-radius: 20px;
   border-color: var(--verdeMedio);
   border: 3px;
 }
-.box-info{
+
+.box-info {
   background-color: var(--verdeEscuro);
   font-weight: 600;
   border-radius: 6px;
@@ -449,57 +528,81 @@ li {
   margin: 12px;
   padding: 0 32px !important;
 }
-.box-info a{
+
+.box-info a {
   text-decoration: none;
   color: var(--branco) !important;
 }
-.box-info h4{
-  font-size: 20px;
+
+.box-info h4 {
+  font-size: 18px;
   font-weight: 400;
   margin-top: 25px;
 }
-.box-info p{
+
+.box-info p {
   color: var(--branco) !important;
   margin-top: 12px;
   margin-bottom: 20px;
   font-weight: 100;
 }
-.box-info-numero{
+
+.box-info-numero {
   font-size: 24px;
   font-weight: 700;
   margin-right: 9px;
 }
-.box-info.acolhidos-pendente{
+
+.box-info.acolhidos-pendente {
   background-color: var(--vermelhoMedio) !important;
 }
-.box-ultimos-cadastrados, .box-graficos{
+
+.box-ultimos-cadastrados,
+.box-graficos {
   margin-top: 20px;
 }
-.box-ultimos-cadastrados .card-header{
+
+.box-ultimos-cadastrados .card-header {
   background: var(--branco) !important;
 }
-.box-ultimos-cadastrados .card-header span{
+
+.box-ultimos-cadastrados .card-header span {
   color: var(--verdeEscuro) !important;
 }
-.box-ultimos-cadastrados-btn-novo{
+
+.box-ultimos-cadastrados-btn-novo {
   background: var(--verdeEscuro) !important;
   color: var(--branco) !important;
   font-size: 16px;
 }
-.card-vermais{
+
+.card-vermais {
   text-align: center;
 }
-.card-vermais a{
+
+.card-vermais a {
   color: var(--transparenciaEscura);
   padding: 6px;
   font-size: 18px;
 }
-.card-vermais a:hover{
+
+.card-vermais a:hover {
   color: var(--transparenciaEscura);
 }
-.campo-pesquisa{
+
+.campo-pesquisa {
   margin: 5px 0px 15px 0px;
 }
-.pesquisa{
+
+.pesquisa {
   margin: 0px !important;
+}
+
+.card-info {
+  text-transform: capitalize;
+}
+
+.botao-mudar-senha {
+  color: white !important;
+  margin-right: 8px;
 }

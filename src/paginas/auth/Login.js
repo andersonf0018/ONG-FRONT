@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import HideBar from "../../components/HideBar.js";
 import axios from "axios";
-
+import auth from "../../middlewares/auth";
 import logo from "../../assets/logo-grande.png";
 
 function Login() {
@@ -12,15 +12,14 @@ function Login() {
   const [senha, setSenha] = useState('');
 
   const login = () => {
-    axios.post('/login', {
+    axios.post('http://localhost:3333/ong/validarAcesso', {
       matricula: matricula,
-      senha: senha,
+      counter: senha,
     }).then((response) => {
+      console.log(response.data);
       history.push("/home");
     })
   };
-
-
 
   return (
     <>
@@ -81,9 +80,6 @@ function Login() {
                     </div>
                   </div>
                   <button
-                    // onClick={() => {
-                    //   history.push("/home");
-                    // }}  
                     onClick={login}
                     className="botao-entrar">Entrar</button>
                 </div>

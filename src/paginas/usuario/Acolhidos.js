@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
 import "../../App.css";
 import api from "../../services/api";
 
 import { Table, Card, Modal, Button, Form } from "react-bootstrap";
 
-function Consultar() {
+function Acolhidos() {
   const [show, setShow] = useState(false);
   const [acolhidos, setAcolhidos] = useState([]);
 
@@ -14,6 +13,16 @@ function Consultar() {
       setAcolhidos(data);
     }).catch(error => console.log(error));
   }, [acolhidos]);
+
+  const apagar = (matriculaApagar) => {
+    if (window.confirm("Tem certeza que deseja apagar esse acolhido?")) {
+      api.delete("http://localhost:3333/ong/deletarAcolhido", {
+        matricula: matriculaApagar
+      }).then((response) => {
+        console.log(response);
+      })
+    }
+  }
 
   return (
     <>
@@ -57,60 +66,66 @@ function Consultar() {
       <Card>
         <Card.Header className="card-header" as="h4">
           <div className="row">
-            <div className="col-6">
-              <div class="row">
-                <span>Consulta</span>
-                <div class="col-5">
-                  <Form.Select className="ajuste">
-                    <option>Acolhidos</option>
-                    <option>Voluntários</option>
-                    <option>Financeiro</option>
-                    <option>Estoque</option>
-                    <option>Relátorios de Unidade</option>
+            <div className="col-7">
+              <div className="row">
+                <span className="col-6">Acolhidos</span>
+                {/* <div className="col-6">
+                  <Form.Select>
+                    <option>Selecione a unidade</option>
+                    <option value="unidade-recife-centro">
+                      Recife - Centro
+                    </option>
+                    <option value="unidade-recife-jardim-sp">
+                      Recife - Jardim São Paulo
+                    </option>
+                    <option value="unidade-paudalho">Paudalho</option>
+                    <option value="unidade-jaboatao">
+                      Jaboatão dos Guararapes
+                    </option>
                   </Form.Select>
-                </div>
+                </div> */}
               </div>
             </div>
-            <div className="col-6">
+            {/* <div className="col-5">
               <div className="row">
                 <div className="col-8">
                   <input
-                    className="form-control consulta-matricula"
+                    className="form-control consulta-cpf"
                     type="text"
-                    placeholder="Matrícula"
-                    id="consulta-matricula"
-                    name="consulta-matricula"
+                    placeholder="CPF"
+                    id="consulta-cpf"
+                    name="consulta-cpf"
                   />
                 </div>
                 <div className="col-4">
                   <button className="horizontal-btn">Consultar</button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </Card.Header>
         <Card.Body className="card-body">
           <Table striped bordered hover size="sm">
             <thead>
               <tr>
+                <th>Matricula</th>
                 <th>Nome</th>
-                <th>Matrícula</th>
-                <th>CPF</th>
                 <th>Unidade</th>
-                <th>Atribuição</th>
               </tr>
             </thead>
             <tbody>
               {acolhidos.map(acolhido => {
                 return (
                   <tr>
-                    <td>{acolhido.nomeCompleto}</td>
-                    <td>02307485</td>
-                    <td>298347148-92</td>
-                    <td>Recife Centro</td>
+                    <td className="card-info">{acolhido.matricula}</td>
+                    <td className="card-info">{acolhido.nomeCompleto}</td>
+                    <td className="card-info">{acolhido.unidadeDeOrigem}</td>
                     <td className="card-vermais">
                       <Button variant="sucess" className="botao-popup" onClick={() => setShow(true)}>
                         <i className="bi bi-plus-square-fill" />
+                      </Button>
+                      <Button variant="danger" className="botao-apagar" onClick={() => apagar(acolhido.matricula)}>
+                        <i class="bi bi-trash"></i>
                       </Button>
                     </td>
                   </tr>
@@ -124,4 +139,4 @@ function Consultar() {
   );
 }
 
-export default Consultar;
+export default Acolhidos;

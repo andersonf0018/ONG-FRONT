@@ -18,23 +18,23 @@ export const menuItems = [
     iconClassName: "bi bi-person-plus",
   },
   {
-    name: "Consultar",
+    name: "Acolhidos",
     exact: true,
-    to: `/consultar`,
-    iconClassName: "bi bi-search",
+    to: `/acolhidos`,
+    iconClassName: "bi bi-people",
   },
   {
-    name: "Relatórios",
+    name: "Colaboradores",
     exact: true,
-    to: `/relatorios`,
+    to: `/colaboradores`,
     iconClassName: "bi bi-journal-text",
   },
-  {
-    name: "Transferir",
-    exact: true,
-    to: `/transferir`,
-    iconClassName: "bi bi-arrow-left-right",
-  },
+  // {
+  //   name: "Transferir",
+  //   exact: true,
+  //   to: `/transferir`,
+  //   iconClassName: "bi bi-arrow-left-right",
+  // },
 ];
 
 const SideMenu = (props) => {
