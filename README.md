@@ -18,10 +18,11 @@
 
 - [Telas](#telas-do-sistema-)
     - [Login](#login)
-    - [Médico](#médico)
-    - [Usuário](#usuário)
+    - [Home](#home)
+    - [Consulta](#consulta)
     - [Cadastro](#cadastro)
     - [Relatório](#relatório)
+    - [Transferir](#transferir)
 
 ## Documentação 📃:
 
@@ -45,17 +46,35 @@ npm start
 
 
 ## Login
+
+### O usuário pode fazer o acesso ao sistema. Caso ele esqueça a sua senha de acesso ele pode recuperá-la. 
 ![login](./doc/images/login.png)
 ![login](./doc/images/forgotPassword.png)
 
 ## Home
+
+### O usuário consegue verificar as informações principais sobre o status da unidade atual. 
 ![home](./doc/images/home.png)
 
 ## Cadastro
+
+### Consegue cadastrar um novo acolhido. 
 ![cadastro](./doc/images/cadastro.png)
 
+## Consulta
+
+### Consegue consultar e localizar um acolhido. 
+![consulta](./doc/images/consulta.png)
+
 ## Relatório
-![busca](./doc/images/relatorios.png)
+
+### Gera relatórios com informações sobre os acolhidos. 
+![relatorio](./doc/images/relatorios.png)
+
+## Transferir
+
+### Faz a transferência de um acolhido de uma unidade para outra. 
+![transferir](./doc/images/transferir.png)
 
 
 ### **[⬆ VOLTAR AO SUMÁRIO](#sumário-)**
