@@ -8,13 +8,9 @@ import { Card, Table } from "react-bootstrap";
 /*** GRÁFICOS***/
 import { Bar, Doughnut } from "react-chartjs-2";
 
-//import e from 'express'
-//const db = require("../../server/mysql.js")
-//import db from "../../server/mysql"
 
 const dataMeses = {
   labels: [
-    //    db.getMes()
   ],
   datasets: [
     {
