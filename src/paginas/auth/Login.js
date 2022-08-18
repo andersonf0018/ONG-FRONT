@@ -3,23 +3,25 @@ import { useHistory } from "react-router-dom";
 import HideBar from "../../components/HideBar.js";
 import axios from "axios";
 import auth from "../../middlewares/auth";
+import { useForm } from "react-hook-form";
 import logo from "../../assets/logo-grande.png";
 
 function Login() {
   let history = useHistory();
+  const { handleSubmit, register } = useForm();
 
-  const [matricula, setMatricula] = useState('');
-  const [senha, setSenha] = useState('');
-
-  const login = () => {
-    axios.post('http://localhost:3333/ong/validarAcesso', {
-      matricula: matricula,
-      counter: senha,
-    }).then((response) => {
-      console.log(response.data);
+ const onSubmit = (data) => {
+  axios.post('http://localhost:3333/ong/validarAcesso', {
+    login: data.login,
+    counter: data.senha,
+  }).then((response) => {
+    if (response.data.valido) {
       history.push("/home");
-    })
-  };
+    }else{
+      alert("Acesso inválido, patrão!")
+    }
+  })
+ }
 
   return (
     <>
@@ -31,7 +33,7 @@ function Login() {
               <img src={logo} alt="logo" class="logo-inicial" />
             </div>
             <div className="col-8 col-md-6 login">
-              <form className="formulario-inicial">
+              <form className="formulario-inicial" onSubmit={handleSubmit(onSubmit)}>
                 <div className="formulario-descricao">
                   <h6 className="formulario-texto-titulo">Acessar</h6>
                   <div>
@@ -47,9 +49,7 @@ function Login() {
                     className="form-control campo-login"
                     placeholder="Matrícula"
                     id="matricula"
-                    onChange={(e) => {
-                      setMatricula(e.target.value);
-                    }}
+                    {...register("login")}
                   />
                 </div>
                 <div className="campo-inicial">
@@ -58,9 +58,8 @@ function Login() {
                     className="form-control campo-login"
                     type="password"
                     placeholder="Senha"
-                    onChange={(e) => {
-                      setSenha(e.target.value);
-                    }}
+                    {...register("senha")}
+
                   />
                 </div>
                 <div className="formulario-botoes">
@@ -80,8 +79,7 @@ function Login() {
                     </div>
                   </div>
                   <button
-                    onClick={login}
-                    className="botao-entrar">Entrar</button>
+                    className="botao-entrar" type="submit">Entrar</button>
                 </div>
               </form>
             </div>
