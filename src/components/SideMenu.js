@@ -111,13 +111,15 @@ const SideMenu = (props) => {
             ))}
           </ul>
         </div>
-        <div className="side-menu-footer">
-          <div className="user-info">
-            <Link exact to="/login">
-              <i class="bi bi-box-arrow-right"></i>
-              Sair
-            </Link>
-          </div>
+
+        <div className="side-menu-footer">                 
+          <Link exact to="/login">        
+            {inactive ? (
+              <a class="bi bi-box-arrow-left menu-item"></a>
+            ) : (
+              <a class="bi bi-box-arrow-left menu-item"> Sair</a>
+            )}                            
+          </Link>
         </div>
       </div>
       <div className="menu-infos">
