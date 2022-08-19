@@ -7,7 +7,7 @@ import { Table, Card, Modal, Button, Form } from "react-bootstrap";
 function Acolhidos() {
   const [show, setShow] = useState(false);
   const [acolhidos, setAcolhidos] = useState([]);
-
+  console.log(acolhidos);
   useEffect(() => {
     api.get("http://localhost:3333/ong/todosOsAcolhidos").then(({ data }) => {
       setAcolhidos(data);
