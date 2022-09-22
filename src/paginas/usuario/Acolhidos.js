@@ -7,21 +7,31 @@ import { Table, Card, Modal, Button, Form } from "react-bootstrap";
 function Acolhidos() {
   const [show, setShow] = useState(false);
   const [acolhidos, setAcolhidos] = useState([]);
-  console.log(acolhidos);
+  const [acolhidoAtual, setAcolhidoAtual] = useState([]);
+
   useEffect(() => {
-    api.get("http://localhost:3333/ong/todosOsAcolhidos").then(({ data }) => {
+    api.get("todosOsAcolhidos").then(({ data }) => {
       setAcolhidos(data);
     }).catch(error => console.log(error));
-  }, [acolhidos]);
+  }, []);
+
 
   const apagar = (matriculaApagar) => {
     if (window.confirm("Tem certeza que deseja apagar esse acolhido?")) {
-      api.delete("http://localhost:3333/ong/deletarAcolhido", {
+      api.delete("deletarAcolhido", {
         matricula: matriculaApagar
       }).then((response) => {
         console.log(response);
       })
     }
+  }
+
+
+  let acolhidoModal = acolhidos.filter(acolhido => acolhido.matricula == acolhidoAtual)
+
+  const modalInfo = (matricula) => {
+    setAcolhidoAtual(matricula);
+    setShow(true)
   }
 
   return (
@@ -40,25 +50,25 @@ function Acolhidos() {
           <form>
             <div className="container"></div>
             <div className="row falso-form">
-              <p>Data de entrada: <span>16/06/2021</span></p>
+              <p>Data de entrada: <span>{acolhidoModal[0] ? acolhidoModal[0].dataDeSaida : ""}</span></p>
             </div>
             <div className="row falso-form">
-              <p>Número de internações: <span>4</span></p>
+              <p>Número de internações: <span>{acolhidoModal[0] ? acolhidoModal[0].numeroDeInternacoes : ""}</span></p>
             </div>
             <div className="row falso-form">
-              <p>Unidade de origem: <span>Recife-Centro</span></p>
+              <p>Unidade de origem: <span>{acolhidoModal[0] ? acolhidoModal[0].unidadeDeOrigem : ""}</span></p>
             </div>
             <div className="row falso-form">
-              <p>Contatos de emergência: <span>(81) 98726-7365 / (81) 98342-6557</span></p>
+              <p>Contatos de emergência: <span>{acolhidoModal[0] ? acolhidoModal[0].contatosDeEmergencia.numero1 : ""} / {acolhidoModal[0] ? acolhidoModal[0].contatosDeEmergencia.numero2 : ""} </span></p>
             </div>
             <div className="row falso-form">
               <p>Usuário que realizou o cadastramento: <span><i className="modal-texto-desabilitado">Não disponível</i></span></p>
             </div>
             <div className="row falso-form">
-              <p>Previsão de Saída: <span>2022</span></p>
+              <p>Previsão de Saída: <span>{acolhidoModal[0] ? acolhidoModal[0].dataDeSaida : ""} </span></p>
             </div>
             <div className="row falso-form">
-              <p>Data de saída: <span><i className="modal-texto-desabilitado">Não disponível</i></span></p>
+              <p>Data de saída: <span>{acolhidoModal[0] ? acolhidoModal[0].dataDeSaida : ""}</span></p>
             </div>
           </form>
         </Modal.Body>
@@ -69,7 +79,7 @@ function Acolhidos() {
             <div className="col-7">
               <div className="row">
                 <span className="col-6">Acolhidos</span>
-                {/* <div className="col-6">
+                <div className="col-6">
                   <Form.Select>
                     <option>Selecione a unidade</option>
                     <option value="unidade-recife-centro">
@@ -83,7 +93,7 @@ function Acolhidos() {
                       Jaboatão dos Guararapes
                     </option>
                   </Form.Select>
-                </div> */}
+                </div>
               </div>
             </div>
             {/* <div className="col-5">
@@ -121,7 +131,7 @@ function Acolhidos() {
                     <td className="card-info">{acolhido.nomeCompleto}</td>
                     <td className="card-info">{acolhido.unidadeDeOrigem}</td>
                     <td className="card-vermais">
-                      <Button variant="sucess" className="botao-popup" onClick={() => setShow(true)}>
+                      <Button variant="sucess" className="botao-popup" onClick={() => modalInfo(acolhido.matricula)}>
                         <i className="bi bi-plus-square-fill" />
                       </Button>
                       <Button variant="danger" className="botao-apagar" onClick={() => apagar(acolhido.matricula)}>

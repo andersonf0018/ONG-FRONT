@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../../App.css";
 import api from "../../services/api";
 
@@ -12,12 +12,12 @@ function Home() {
     const [acolhidos, setAcolhidos] = useState([]);
 
     useEffect(async () => {
-        api.get("http://localhost:3333/ong/todosOsAcolhidos")
+        api.get("todosOsAcolhidos")
             .then(({ data }) => {
                 setAcolhidos(data);
             })
             .catch((error) => console.log(error));
-    }, [acolhidos]);
+    }, []);
 
     const dataMeses = {
         labels: [],
@@ -58,11 +58,18 @@ function Home() {
         ],
     };
 
+
+    let between18and30 = acolhidos.filter(acolhido => acolhido.idade >= 18 && acolhido.idade <= 30);
+    let between31and50 = acolhidos.filter(acolhido => acolhido.idade >= 31 && acolhido.idade <= 50);
+    let between51and74 = acolhidos.filter(acolhido => acolhido.idade >= 51 && acolhido.idade <= 74);
+    let moreThan75 = acolhidos.filter(acolhido => acolhido.idade >= 75);
+
+
     const dataFaixaEtaria = {
         labels: ["18-30", "31-50", "51-74", "75+"],
         datasets: [
             {
-                data: [174, 201, 149, 47],
+                data: [between18and30.length, between31and50.length, between51and74.length, moreThan75.length],
                 backgroundColor: ["#6fbf83", "#05976e", "#076b58", "#03a688"],
                 hoverOffset: 5,
             },

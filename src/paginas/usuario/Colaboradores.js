@@ -32,7 +32,7 @@ function Colaboradores() {
   const [show, setShow] = useState(false);
 
   const registrar = () => {
-    api.post("http://localhost:3333/ong/cadastrarAcesso", {
+    api.post("cadastrarAcesso", {
       nomeCompleto: nome,
       login: matricula,
       counter: senha,
@@ -44,7 +44,7 @@ function Colaboradores() {
 
   const apagar = (loginApagar) => {
     if (window.confirm("Tem certeza que deseja apagar esse voluntário?")) {
-      api.delete("http://localhost:3333/ong/deletarCadastro", {
+      api.delete("deletarCadastro", {
         login: loginApagar
       }).then((response) => {
         console.log(response);
@@ -53,7 +53,7 @@ function Colaboradores() {
   }
 
   const mudarSenha = (loginMudar) => {
-    api.put(`http://localhost:3333/ong/atualizarSenha/${loginMudar}`, {
+    api.put(`atualizarSenha/${loginMudar}`, {
       counter: novaSenha
     }).then((response) => {
       console.log(response);
@@ -67,7 +67,7 @@ function Colaboradores() {
   }
 
   useEffect(() => {
-    api.get("http://localhost:3333/ong/buscarTodosOsCadastros").then(({ data }) => {
+    api.get("buscarTodosOsCadastros").then(({ data }) => {
       setColaboradores(data);
     }).catch(error => console.log(error));
   }, [colaboradores]);
@@ -109,9 +109,9 @@ function Colaboradores() {
                     <td className="card-info">{colaborador.nomeCompleto}</td>
                     <td className="card-info">{colaborador.usuario}</td>
                     <td className="card-vermais">
-                      {/* <Button variant="warning" className="botao-mudar-senha" onClick={() => abrirMudarSenha(colaborador.login)}>
+                      <Button variant="warning" className="botao-mudar-senha" onClick={() => abrirMudarSenha(colaborador.login)}>
                         <i class="bi bi-key"></i>
-                      </Button> */}
+                      </Button>
                       <Button variant="danger" className="botao-apagar" onClick={() => apagar(colaborador.usuario)}>
                         <i class="bi bi-trash"></i>
                       </Button>

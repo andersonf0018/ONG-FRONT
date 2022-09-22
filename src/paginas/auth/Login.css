@@ -1,0 +1,87 @@
+.login-screen {
+  padding: 100px;
+}
+
+.initial-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+.initial-form {
+  border: 1px solid var(--verdeClaro);
+  border-radius: 12px;
+  padding: 60px 60px;
+}
+
+.description-form {
+  text-align: center;
+  color: var(--preto);
+  margin-bottom: 8%;
+  text-align: left;
+}
+
+.title-text-form {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.title-description-form {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.initial-field {
+  position: relative;
+}
+
+.initial-field input {
+  padding-left: 35px;
+}
+
+.initial-field i {
+  font-size: 18px;
+  position: absolute;
+  padding: 7px;
+  pointer-events: none;
+}
+
+.login-field {
+  margin: 20px auto;
+}
+
+.buttons-form {
+  text-align: center;
+  color: var(--preto) !important;
+  margin-top: 25px;
+}
+
+.remember-account-checkbox {
+  text-align: left;
+}
+
+.label-remember-account {
+  margin-left: 10px;
+}
+
+.forgot-password {
+  text-align: right;
+}
+
+.forgot-password-link {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-button {
+  background-color: var(--verdeAzulado);
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--branco);
+  padding: 6px 120px;
+  margin-top: 5%;
+}

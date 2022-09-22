@@ -9817,7 +9817,11 @@ react-fast-compare@^2.0.1:
 
 react-hook-form@^7.34.2:
   version "7.34.2"
+<<<<<<< Updated upstream
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.34.2.tgz#9ac6d1a309a7c4aaa369d1269357a70e9e9bf4de"
+=======
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.34.2.tgz"
+>>>>>>> Stashed changes
   integrity sha512-1lYWbEqr0GW7HHUjMScXMidGvV0BE2RJV3ap2BL7G0EJirkqpccTaawbsvBO8GZaB3JjCeFBEbnEWI1P8ZoLRQ==
 
 react-is@^16.13.1, react-is@^16.3.2, react-is@^16.6.0, react-is@^16.7.0:
