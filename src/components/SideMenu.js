@@ -32,19 +32,19 @@ export const menuItems = [
         to: `/colaboradores`,
         iconClassName: "bi bi-journal-text",
     },
-    // {
-    //   name: "Transferir",
-    //   exact: true,
-    //   to: `/transferir`,
-    //   iconClassName: "bi bi-arrow-left-right",
-    // },
+    {
+        name: "Transferir",
+        exact: true,
+        to: `/transferir`,
+        iconClassName: "bi bi-arrow-left-right",
+    },
 ];
 
 const SideMenu = (props) => {
     const [usuario, setUsuario] = useState([]);
     const [inactive, setInactive] = useState(false);
     useEffect(async () => {
-        api.get("http://localhost:3333/ong/buscarCadastro", {params: {login: Login.login}})
+        api.get("http://localhost:3333/ong/buscarCadastro", { params: { login: Login.login } })
             .then(({ data }) => {
                 setUsuario(data);
             })

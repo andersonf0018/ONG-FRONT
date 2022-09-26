@@ -13,18 +13,16 @@ function Login(props) {
   const [login, setLogin] = useState("");
 
   const onSubmit = (data) => {
-    api
-      .post("validarAcesso", {
-        login: data.login,
-        counter: data.senha,
-      })
-      .then((response) => {
-        if (response.data.valido) {
-          history.push("/home");
-        } else {
-          alert("Acesso inválido, patrão!");
-        }
-      });
+    api.post("validarAcesso", {
+      login: data.login,
+      counter: data.senha,
+    }).then((response) => {
+      if (response.data.valido) {
+        history.push("/home");
+      } else {
+        alert("Acesso inválido, patrão!");
+      }
+    });
     setLogin(data.login);
   };
 
