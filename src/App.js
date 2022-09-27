@@ -5,7 +5,7 @@ import { useState } from "react";
 
 /* Usuario */
 import Home from "./paginas/usuario/Home.js";
-import Cadastros from "./paginas/usuario/Cadastros.js";
+import Cadastros from "./paginas/usuario/Cadastro/Cadastros";
 import Acolhidos from "./paginas/usuario/Acolhidos.js";
 import Colaboradores from "./paginas/usuario/Colaboradores.js";
 import Transferir from "./paginas/usuario/Transferir.js";
