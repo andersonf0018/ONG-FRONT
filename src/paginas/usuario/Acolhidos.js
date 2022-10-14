@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../App.css";
 import api from "../../services/api";
-
+import unidades from "../../utils/unidades.json";
 import { Table, Card, Modal, Button, Form } from "react-bootstrap";
 
 function Acolhidos() {
@@ -80,38 +80,31 @@ function Acolhidos() {
               <div className="row">
                 <span className="col-6">Acolhidos</span>
                 <div className="col-6">
-                  <Form.Select>
-                    <option>Selecione a unidade</option>
-                    <option value="unidade-recife-centro">
-                      Recife - Centro
-                    </option>
-                    <option value="unidade-recife-jardim-sp">
-                      Recife - Jardim São Paulo
-                    </option>
-                    <option value="unidade-paudalho">Paudalho</option>
-                    <option value="unidade-jaboatao">
-                      Jaboatão dos Guararapes
-                    </option>
+                  <Form.Select onChange={console.log("bora bill")}> 
+                    <option disabled selected> --- Selecione a Unidade --- </option>
+                    {unidades.map(item =>
+                      <option key={item.key} value={item.valor} >{item.unidade}</option>)
+                    }
                   </Form.Select>
                 </div>
               </div>
             </div>
-            {/* <div className="col-5">
+            <div className="col-5">
               <div className="row">
                 <div className="col-8">
                   <input
-                    className="form-control consulta-cpf"
+                    className="form-control consulta-matricula"
                     type="text"
-                    placeholder="CPF"
-                    id="consulta-cpf"
-                    name="consulta-cpf"
+                    placeholder="Matrícula"
+                    id="consulta-matricula"
+                    name="consulta-matricula"
                   />
                 </div>
                 <div className="col-4">
                   <button className="horizontal-btn">Consultar</button>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </Card.Header>
         <Card.Body className="card-body">

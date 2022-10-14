@@ -1,30 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import HideBar from "../../components/HideBar";
 import { useForm } from "react-hook-form";
 import logo from "../../assets/logo-grande.png";
 import api from "../../services/api";
-
+import { AuthLogin } from "./AuthLogin";
 import "./Login.css";
+import Cookies from "js-cookie";
+import { useEffect } from "react";
 
-function Login(props) {
+
+function Login() {
+  const Auth = React.useContext(AuthLogin)
+  const readCookie = () => {
+    const user = Cookies.get("user");
+    if (user) {
+      Auth.setAuth(true);
+    }
+  };
+
+  useEffect(() => {
+    readCookie();
+  }, [])
+
   let history = useHistory();
   const { handleSubmit, register } = useForm();
   const [login, setLogin] = useState("");
-
   const onSubmit = (data) => {
     api.post("validarAcesso", {
       login: data.login,
       counter: data.senha,
     }).then((response) => {
-      if (response.data.valido) {
+      if (response.data.valido && response.data.usuario === "Voluntário") {
+        setLogin(response.data);
+        Cookies.set("user", "loginTrue", { expires: 1 });
+        readCookie();
+        history.push("/home");
+      } else if (response.data.valido && response.data.usuario === "Administrador") {
+        setLogin(response.data);
+        history.push("/home");
+      } else if (response.data.valido && response.data.usuario === "Médico") {
+        setLogin(response.data);
         history.push("/home");
       } else {
         alert("Acesso inválido, patrão!");
       }
     });
-    setLogin(data.login);
   };
+  console.log(login)
+  console.log(Auth.auth)
 
   return (
     <>

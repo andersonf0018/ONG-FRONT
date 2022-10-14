@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import logo from "../assets/logo-horizontal-branca.png";
 import { Link, Redirect } from "react-router-dom";
 import favicon from "../assets/logo-favicon-branco.png";
 import MenuItem from "./MenuItem";
 import api from "../services/api";
 import Login from "../paginas/auth/Login";
+import { DataContext } from "../utils/DataContext";
+import Cookies from "js-cookie";
 
-console.log(Login.login)
 export const menuItems = [
     {
         name: "Início",
@@ -41,8 +42,12 @@ export const menuItems = [
 ];
 
 const SideMenu = (props) => {
+    const context = useContext(DataContext);
     const [usuario, setUsuario] = useState([]);
     const [inactive, setInactive] = useState(false);
+    const removeCookie = () => {
+        Cookies.remove("user");
+    }
     useEffect(async () => {
         api.get("http://localhost:3333/ong/buscarCadastro", { params: { login: Login.login } })
             .then(({ data }) => {
@@ -73,7 +78,6 @@ const SideMenu = (props) => {
                 removeActiveClassFromSubMenu();
                 menuItems.forEach((el) => el.classList.remove("active"));
                 el.classList.toggle("active");
-                console.log(next);
                 if (next !== null) {
                     next.classList.toggle("active");
                 }
@@ -114,12 +118,12 @@ const SideMenu = (props) => {
 
                 <div className="side-menu-footer">
                     <Link exact to="/login">
-                        {inactive ? <a class="bi bi-box-arrow-left menu-item"></a> : <a class="bi bi-box-arrow-left menu-item"> Sair</a>}
+                         <a class="bi bi-box-arrow-left menu-item" onClick={removeCookie}> Sair</a>
                     </Link>
                 </div>
             </div>
             <div className="menu-infos">
-                <p className="welcome-msg">Olá, Usuário</p>
+                <p className="welcome-msg">Olá, Usuário! </p>
             </div>
         </>
     );
